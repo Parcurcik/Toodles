@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url(../fonts/Ubuntu/Ubuntu-Medium.ttf);
+}
+
+.input_body {
+    width: 55vw;
+    height: 6vh;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    align-items: center;
+    z-index: 9999999;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.input_text {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    width: 5vw;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.input_text:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.rotate {
+    transition: transform 30s ease-in-out;
+}
+
+.rotate-toodle {
+    transform: rotate(10440deg);
+}
+
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.input_body--focused {
+    background-color: white;
+}

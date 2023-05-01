@@ -1,0 +1,76 @@
+@font-face {
+	font-family: 'Ubuntu';
+	src: url(../fonts/Ubuntu/Ubuntu-Medium.ttf);}
+
+.menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: 0.4s all;
+    z-index: 1;
+}
+
+.menu.active {
+    transform: translateX(0);
+}
+
+.menu__content {
+    width: 20%;
+    height: 100%;
+    background-color: #FFAD3E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.4s all;
+    box-shadow: 25px 4px 100px rgba(0, 0, 0, 0.25);
+}
+
+.menu__content ul li a {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 40px;
+    color: #9600FF !important;
+    text-decoration: none;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 0.9px black;
+    max-width: 100%;
+}
+
+.menu__content ul li {
+}
+
+.menu__content ul {
+    padding-top: 5%;
+}
+
+.menu_cont_div {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 20vw;
+    padding-left: 20px;
+    height: 10vh;
+    background: #FFAD3E;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.active_href {
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #DCA0FA 156.4%);
+}
+
+.DDM_cont {
+    margin-top: 12vh;
+}
+
+@media (min-width: 768px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .menu__content ul li a {
+    font-size: calc(20px + 0.5vw); /* Задаем размер шрифта в зависимости от ширины экрана пользователя */
+    max-font-size: 40px; /* Ограничиваем максимальный размер шрифта до 40px */
+  }
+}
