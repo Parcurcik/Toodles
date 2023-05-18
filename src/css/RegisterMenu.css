@@ -1,0 +1,87 @@
+@font-face {
+	font-family: 'Ubuntu';
+	src: url(../fonts/Ubuntu/Ubuntu-Medium.ttf);}
+
+.menu_reg {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateY(+200%);
+    transition: 0.4s all;
+    z-index: 3;
+    align-items: center;
+}
+
+.menu_reg.active {
+    transform: translateY(0);
+}
+
+.menu__content_reg {
+    width: 33%;
+    height: 83%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    transition: 0.4s all;
+    background: #FFAD3E;
+    border-radius: 25px
+}
+
+.menu__content_reg ul li a {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 40px;
+    color: #9600FF !important;
+    text-decoration: none;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 0.9px black;
+    max-width: 100%;
+}
+
+.menu__content_reg ul li {
+}
+
+.menu__content_reg ul {
+    padding-top: 5%;
+}
+
+.menu_cont_div_reg {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    box-sizing: border-box;
+    width: 20vw;
+    padding-left: 20px;
+    height: 10vh;
+    background: #FFAD3E;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.active_href_reg {
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #DCA0FA 156.4%);
+    box-shadow: inset 5px 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+.DDM_cont_reg {
+    margin-top: 12vh;
+}
+
+.avatar_cont {
+    align-items: center;
+    flex-direction: row;
+    margin-top: 5vh;
+    height: 15%;
+    width: auto;
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .menu__content_reg {width: 80%}
+}

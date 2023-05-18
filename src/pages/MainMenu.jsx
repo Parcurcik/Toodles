@@ -28,7 +28,7 @@ const MainMenu = () => {
       };
 
     const [menuActive, setMenuActive] = useState(false)
-    const items = [{value:"Отвечу текстом", href: '/short', index: 0}, {value:"Помогу с кодом", href: '/code', index: 2},]
+    const items = [{value:"Отвечу текстом", href: '/short', index: 0}, {value:"Отвечу кодом", href: '/code', index: 2},]
 
     return (
         <div className="menu_main">
@@ -60,7 +60,7 @@ const MainMenu = () => {
                         <p>2) Ответ</p>
                         <p>3) Ответ</p>
                     </div>
-                    <DropDownMenu content={"Помогу с кодом"} on_click={() => handleToggle(2)} isFlipped={isExpanded3}/>
+                    <DropDownMenu content={"Отвечу кодом"} on_click={() => handleToggle(2)} isFlipped={isExpanded3}/>
                     <div className={`content-container ${isExpanded3 ? "visible" : "hidden"}`}>
                         <p>1) Ответ</p>
                         <p>2) Ответ</p>

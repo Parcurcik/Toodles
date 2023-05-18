@@ -4,6 +4,7 @@ import MainMenu from "./pages/MainMenu";
 import ShortPage from "./pages/ShortPage";
 import LongPage from "./pages/LongPage";
 import CodePage from "./pages/CodePage";
+import RegisterPage from "./pages/RegisterPage";
 
 const Router = () => {
     return (
@@ -13,6 +14,7 @@ const Router = () => {
                 <Route path="/short" element={<ShortPage />}/>
                 <Route path="/long" element={<LongPage />}/>
                 <Route path="/code" element={<CodePage />}/>
+                <Route path="/registration" element={<RegisterPage />}/>
             </Routes>
         </BrowserRouter>
     )

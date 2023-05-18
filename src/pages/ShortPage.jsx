@@ -31,6 +31,7 @@ const ShortPage = () => {
                 const answer = response.data.result
                 setData(answer);
                 setShowAnswer(true)
+                console.log(rotate)
                 setRotaiting(false)
             })
             .catch(error => {

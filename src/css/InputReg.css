@@ -1,0 +1,42 @@
+@font-face {
+	font-family: 'Ubuntu';
+	src: url(../fonts/Ubuntu/Ubuntu-Medium.ttf);}
+
+@font-face {
+	font-family: 'Ubuntu-light';
+	src: url(../fonts/Ubuntu/Ubuntu-Light.ttf);}
+
+@font-face {
+	font-family: 'Ubuntu-Med';
+	src: url(../fonts/Ubuntu/Ubuntu-Regular.ttf);}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+
+}
+
+.inp_reg_body {
+    background: #E9CBF8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    width: 29vw;
+    height: 7vh;
+    margin-top: 5%;
+    z-index: 2;
+    display: flex;
+}
+
+.inp_text_data {
+    font-family: 'Ubuntu-Med';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 34px;
+
+    color: rgba(0, 0, 0, 1);
+
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    /* identical to box height */
+}
+
