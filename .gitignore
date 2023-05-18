@@ -5,7 +5,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
+__pycache__
 .vscode
 doc
 tes_venv

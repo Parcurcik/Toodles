@@ -18,6 +18,10 @@ async def process_data():
     response_data = {'message': 'Данные успешно обработаны', 'result': result}
     return jsonify(response_data), 200
 
+@app.route('/api/registration', methods=['POST', 'OPTIONS'])
+@route_cors(allow_origin="*")
+async def register():
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
