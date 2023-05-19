@@ -1,35 +1,32 @@
-import asyncio
-from concurrent.futures import ThreadPoolExecutor
 import json
-import pytest
-
+import unittest
+from flask_testing import TestCase
 from server import app
 
 
-@pytest.mark.asyncio
+class AppTestCase(TestCase):
 
-async def test_process_data():
-    async with app.test_client() as client:
+    def create_app(self):
+        app.config['TESTING'] = True
+        return app
+
+    def test_process_data(self):
         data = ['Привет.']
-        response = await client.post('http://127.0.0.1:5000/api/question', json=data)
-        assert response.status_code == 200
-        response_data = await response.get_json()
-        assert 'message' in response_data
-        assert 'result' in response_data
+        response = self.client.post('/api/question', json=data)
+        self.assertEqual(response.status_code, 200)
+        response_data = json.loads(response.data)
+        self.assertIn('message', response_data)
+        self.assertIn('result', response_data)
 
-
-@pytest.mark.asyncio
-async def test_multiprocessing_backend():
-    async with app.test_client() as client:
+    def test_multiprocessing_backend(self):
         data = ['Напиши отзыв на ноутбук HP.']
-        tasks = [asyncio.create_task(client.post('http://127.0.0.1:5000/api/question', json=data)) for _ in range(50)]
-        responses = await asyncio.gather(*tasks)
-
-        for response in responses:
-            assert response.status_code == 200
-            response_data = await response.get_json()
-            assert 'message' in response_data
-            assert 'result' in response_data
+        for _ in range(50):
+            response = self.client.post('/api/question', json=data)
+            self.assertEqual(response.status_code, 200)
+            response_data = json.loads(response.data)
+            self.assertIn('message', response_data)
+            self.assertIn('result', response_data)
 
 
-
+if __name__ == '__main__':
+    unittest.main()

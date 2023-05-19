@@ -12,10 +12,10 @@ tes_venv
 package-lock.json
 yarn.lock
 public
-__pycache__
 tood_env
 # testing
 /coverage
+.pytest_cache
 
 # production
 /build

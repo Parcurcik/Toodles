@@ -1,27 +1,31 @@
-from quart import Quart, request, jsonify
-from quart_cors import cors, route_cors
+from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+import asyncio
 from toodles_model.call_model import Toodles
 
-app = Quart(__name__)
-app = cors(app, allow_origin="*")
+app = Flask(__name__)
+CORS(app)
 
 toodles_instance = Toodles()
 
-
 @app.route('/api/question', methods=['POST', 'OPTIONS'])
-@route_cors(allow_origin="*")
-async def process_data():
-    data = await request.get_json()
+@cross_origin(origin='http://localhost:3000')
+def process_data():
+    data = request.get_json()
     print(data[0])
-    result = toodles_instance.make_answer(data)
+
+    async def process_question():
+        result = toodles_instance.make_answer(data)
+        return result
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    result = loop.run_until_complete(process_question())
+
     print(result)
     response_data = {'message': 'Данные успешно обработаны', 'result': result}
     return jsonify(response_data), 200
 
-@app.route('/api/registration', methods=['POST', 'OPTIONS'])
-@route_cors(allow_origin="*")
-async def register():
-    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
