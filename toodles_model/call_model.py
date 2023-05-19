@@ -112,3 +112,4 @@ class Toodles:
             return self.gen_fragment(beginning, temperature=1.0, max_length=200)
         else:
             return self.gen_fragment(beginning, temperature=1.0, max_length=100)
+

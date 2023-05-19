@@ -26,6 +26,8 @@ const RegisterMenu = ({items, active, setActive, href}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+        /// Временно ставится только первая картинка
+    const [avatar, setAvatar] = useState("../images/updated_image.png");
 
     const setEmptyData = () => {
         setFirstName("");
@@ -34,6 +36,7 @@ const RegisterMenu = ({items, active, setActive, href}) => {
         setPassword("");
         setRepeatPassword("");
     }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,14 +55,19 @@ const RegisterMenu = ({items, active, setActive, href}) => {
                 lastName,
                 email,
                 password,
-                repeatPassword,
+                avatar
             };
 
-            const response = await axios.post("URL_адрес_сервера", data);
+
+            const response = await axios.post("http://127.0.0.1:5000/api/register", data);
             console.log(response.data);
 
             setEmptyData();
         } catch (error) {
+            if (error.response && error.response.status === 400) {
+                const errorMessage = error.response.data.message;
+                console.log(errorMessage);      // Обработать в React-Component эту 400 ошибку, в основном, это повторная регистрация на одну почту
+            }
             // Обработка ошибок валидации, допилить вывод в строчки/под строчки
 
             if (error instanceof yup.ValidationError) {
@@ -73,7 +81,6 @@ const RegisterMenu = ({items, active, setActive, href}) => {
                 // Вывод в виде
                 // {firstName: 'Введите имя', lastName: 'Введите фамилию', email: 'Введите адрес электронной почты', password: 'Пароль должен содержать минимум 6 символов'}
             }
-
 
 
         }
