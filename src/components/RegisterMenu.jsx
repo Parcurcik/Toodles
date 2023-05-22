@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../css/RegisterMenu.css'
 import reg_logo from '../images/reg_logo.png'
 import InputData from "./InputData";
@@ -10,6 +10,7 @@ import four_image from "../images/four_image.png"
 import adding_image from "../images/adding_image.png"
 import axios from "axios";
 import * as yup from "yup";
+import {useNavigate} from 'react-router-dom'
 
 const validationSchema = yup.object().shape({
     firstName: yup.string().required("Введите имя"),
@@ -20,13 +21,13 @@ const validationSchema = yup.object().shape({
 });
 
 const RegisterMenu = ({items, active, setActive, href}) => {
-
+    const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
-        /// Временно ставится только первая картинка
+    /// Временно ставится только первая картинка
     const [avatar, setAvatar] = useState("../images/updated_image.png");
 
     const setEmptyData = () => {
@@ -61,6 +62,11 @@ const RegisterMenu = ({items, active, setActive, href}) => {
 
             const response = await axios.post("http://127.0.0.1:5000/api/register", data);
             console.log(response.data);
+            const {access_token} = response.data;
+            console.log(access_token)
+            localStorage.setItem('access_token', access_token);
+            console.log(localStorage)
+            navigate('/')
 
             setEmptyData();
         } catch (error) {
@@ -84,7 +90,9 @@ const RegisterMenu = ({items, active, setActive, href}) => {
 
 
         }
+
     };
+
     return (
         <div className={active ? "menu_reg active" : "menu_reg"} onClick={() => setActive(false)}>
             <div className={"menu__content_reg"} onClick={e => e.stopPropagation()}>
