@@ -34,10 +34,12 @@ const Register = () => {
 
         axios.post('http://127.0.0.1:5000/api/login', data)
             .then(response => {
+
+                console.log(response.data);
                 const {access_token} = response.data;
                 localStorage.setItem('access_token', access_token);
-                console.log(localStorage)
-                navigate('/')
+                navigate('/');
+
             })
             .catch(error => {
                 if (error.response && error.response.status === 400) {

@@ -1,10 +1,8 @@
-import psycopg2
 from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS, cross_origin
 import asyncio
 from toodles_model.call_model import Toodles
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required
-import bcrypt
+from flask_jwt_extended import JWTManager, create_access_token
 from models import db, User
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -15,7 +13,6 @@ toodles_instance = Toodles()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Rfr123@localhost:5432/users'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = '20E0DE1D130FE2045E9F77217B23835DDFB30DC0F33C860576FC0D2044D41F42'
-
 db.init_app(app)
 jwt = JWTManager(app)
 
@@ -64,7 +61,6 @@ def register():
     db.session.commit()
 
     access_token = create_access_token(identity=email)
-    print(access_token)
 
     response_data = {'message': 'Регистрация прошла успешно', 'access_token': access_token}
     return jsonify(response_data), 200
@@ -91,7 +87,6 @@ def login():
         return jsonify(response_data), 400
 
     access_token = create_access_token(identity=email)
-    print(access_token)
 
     response_data = {'message': 'Аутентификация прошла успешно', 'access_token': access_token}
     return jsonify(response_data), 200

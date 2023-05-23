@@ -63,12 +63,14 @@ const RegisterMenu = ({items, active, setActive, href}) => {
             const response = await axios.post("http://127.0.0.1:5000/api/register", data);
             console.log(response.data);
             const {access_token} = response.data;
-            console.log(access_token)
             localStorage.setItem('access_token', access_token);
-            console.log(localStorage)
-            navigate('/')
+
+
+            navigate('/');
 
             setEmptyData();
+
+
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 const errorMessage = error.response.data.message;
