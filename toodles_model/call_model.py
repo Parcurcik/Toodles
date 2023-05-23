@@ -101,10 +101,10 @@ class Toodles:
         beginning = beginning[0]
         beginning_cleaned = beginning.rstrip(''.join(self.punctuations)).lower()
         if beginning_cleaned == 'привет' or beginning_cleaned == 'как тебя зовут' or beginning_cleaned == 'как твое имя':
-            time.sleep(3)
+            time.sleep(5)
             return 'Привет, меня зовут Toodles.'
         elif beginning_cleaned in ['кто тебя сделал', 'кто тебя создал', 'кто ты', 'кто ты такой']:
-            time.sleep(3)
+            time.sleep(5)
             return 'Я - Toodles, разработка команды RTF-team, работаю на дообученной модели ruGpt3-medium.'
         elif 'сочинение' in beginning_cleaned:
             return self.gen_fragment(beginning, temperature=1.0, max_length=400)
