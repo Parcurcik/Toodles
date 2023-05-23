@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+@font-face {
+	font-family: 'Ubuntu-light';
+	src: url(/fonts/Ubuntu/Ubuntu-Light.ttf);}
+
 .menu_main {
   background: linear-gradient(180deg, #C54DFF -29.4%, rgba(197, 77, 255, 0) 127.36%);
   background-color: black;
@@ -145,5 +149,45 @@ code {
   font-size: 14px;
   line-height: 23px;
 
+  color: #000000;
+}
+
+.faq_cont {
+  position: absolute;
+  width: auto;
+  height: auto;
+
+  max-width: 92%;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  left: 5%;
+
+  background: #F8E3C7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.faq_cont p {
+  font-family: 'Ubuntu-light';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 23px;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-bottom: 6%;
+  color: #000000;
+}
+
+.faq_cont h1 {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 23px;
   color: #000000;
 }

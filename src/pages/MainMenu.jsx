@@ -28,7 +28,7 @@ const MainMenu = () => {
       };
 
     const [menuActive, setMenuActive] = useState(false)
-    const items = [{value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/code', index: 2},]
+    const items = [{value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/long', index: 2},]
 
     return (
         <div className="menu_main">
