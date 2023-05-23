@@ -18,8 +18,7 @@ const ShortPage = () => {
 
 
     const items = [
-        {value: "Отвечу текстом", href: "/short", index: 0},
-        {value: "Помогу с кодом", href: "/code", index: 2},
+        {value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/code', index: 2},
     ];
 
     const questRequest = (data) => {

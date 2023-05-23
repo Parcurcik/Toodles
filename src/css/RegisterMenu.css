@@ -9,7 +9,7 @@
     height: 100vh;
     top: 0;
     left: 0;
-    transform: translateY(+200%);
+    transform: translateY(+1000%);
     transition: 0.4s all;
     z-index: 3;
     align-items: center;

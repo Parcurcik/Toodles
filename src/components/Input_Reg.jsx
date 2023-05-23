@@ -8,8 +8,9 @@ const Input_Reg = ({marginTop, placeHolder, image, input_type = "text", value, o
              style={{marginTop: marginTop}}>
             <label
                 style={{
-                    width: "22vw",
-                    marginTop: "1%"
+                    width: "90%",
+                    alignItems: "center",
+                    display: "flex"
                 }}>
                 <input
 
@@ -19,6 +20,7 @@ const Input_Reg = ({marginTop, placeHolder, image, input_type = "text", value, o
                         outline: 'none',
                         boxShadow: 'none',
                         paddingLeft: "2vw",
+                        marginTop: "2%"
                     }}
                     type={input_type}
                     className={"inp_text_data"}

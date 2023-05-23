@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 toodles_instance = Toodles()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Rfr123@localhost:5432/users'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost:5432/postgres'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = '20E0DE1D130FE2045E9F77217B23835DDFB30DC0F33C860576FC0D2044D41F42'
 

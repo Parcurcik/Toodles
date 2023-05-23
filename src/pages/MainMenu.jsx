@@ -28,7 +28,7 @@ const MainMenu = () => {
       };
 
     const [menuActive, setMenuActive] = useState(false)
-    const items = [{value:"Отвечу текстом", href: '/short', index: 0}, {value:"Отвечу кодом", href: '/code', index: 2},]
+    const items = [{value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/code', index: 2},]
 
     return (
         <div className="menu_main">
@@ -54,17 +54,11 @@ const MainMenu = () => {
             <div className={menuActive ? "work-area active" : "work-area"}>
                 <img src={logo} className="logo-main"/>
                 <div className={"DDM_cont"}>
-                    <DropDownMenu content={"Отвечу текстом"} on_click={handleToggle} isFlipped={isVisible}/>
+                    <DropDownMenu content={"Спроси Toodles"} on_click={handleToggle} isFlipped={isVisible}/>
                     <div className={`content-container ${isVisible ? "visible" : "hidden"}`}>
-                        <p>1) Ответ</p>
-                        <p>2) Ответ</p>
-                        <p>3) Ответ</p>
-                    </div>
-                    <DropDownMenu content={"Отвечу кодом"} on_click={() => handleToggle(2)} isFlipped={isExpanded3}/>
-                    <div className={`content-container ${isExpanded3 ? "visible" : "hidden"}`}>
-                        <p>1) Ответ</p>
-                        <p>2) Ответ</p>
-                        <p>3) Ответ</p>
+                        <p>1) Чем занимаются программисты?</p>
+                        <p>2) Напиши сочинение на тему счастье.</p>
+                        <p>3) Что включить в мотивационное письмо?</p>
                     </div>
                 </div>
             </div>

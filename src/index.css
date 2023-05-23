@@ -28,8 +28,9 @@ code {
   display: flex;
   position: absolute;
   right: 0;
+  margin-top: 6%;
   width: 95vw;
-  height: 100vh;
+  height: 50vh;
   align-items: center;
   flex-direction: column;
   transition: width 0.5s ease-out;
