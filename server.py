@@ -6,13 +6,18 @@ from config import db_config
 from toodles_model.call_model import Toodles
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 import bcrypt
+from models import db, User
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 
 toodles_instance = Toodles()
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Rfr123@localhost:5432/users'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = '20E0DE1D130FE2045E9F77217B23835DDFB30DC0F33C860576FC0D2044D41F42'
 
+db.init_app(app)
 jwt = JWTManager(app)
 
 
@@ -47,37 +52,22 @@ def register():
     password = data.get('password')
     avatar = data.get('avatar')
 
-    conn = psycopg2.connect(**db_config)
-    cursor = conn.cursor()
+    existing_user = User.query.filter_by(email=email).first()
 
-    try:
-        select_query = "SELECT email FROM registration WHERE email = %s"
-        cursor.execute(select_query, (email,))
-        existing_user = cursor.fetchone()
+    if existing_user:
+        response_data = {'message': 'Пользователь с такой почтой уже существует'}
+        return jsonify(response_data), 400
 
-        if existing_user:
-            response_data = {'message': 'Пользователь с такой почтой уже существует'}
-            return jsonify(response_data), 400
+    hashed_password = hash_password(password)
 
-        hashed_password = hash_password(password)
+    new_user = User(name=name, last_name=last_name, email=email, avatar=avatar, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
 
-        insert_query = 'INSERT INTO registration (last_name, first_name, email, avatar, password) VALUES (%s, %s, %s, %s, %s)'
-        cursor.execute(insert_query, (last_name, name, email, avatar, hashed_password))
-        conn.commit()
+    access_token = create_access_token(identity=email)
+    print(access_token)
 
-        access_token = create_access_token(identity=email)
-        print(access_token)
-
-        response_data = {'message': 'Регистрация прошла успешно', 'access_token': access_token}
-        return jsonify(response_data), 200
-    except psycopg2.Error as e:
-        response_data = {'message': 'Ошибка при регистрации'}
-        return jsonify(response_data), 500
-    finally:
-        cursor.close()
-        conn.close()
-
-    response_data = {'message': 'Регистрация прошла успешно'}
+    response_data = {'message': 'Регистрация прошла успешно', 'access_token': access_token}
     return jsonify(response_data), 200
 
 
@@ -89,55 +79,31 @@ def login():
 
     email = data.get('email')
     password = data.get('password')
-    hashed_password = hash_password(password)
-    conn = psycopg2.connect(**db_config)
-    cursor = conn.cursor()
 
-    try:
-        select_query = "SELECT email, password FROM registration WHERE email = %s"
-        cursor.execute(select_query, (email,))
-        user = cursor.fetchone()
+    user = User.query.filter_by(email=email).first()
 
-        if not user:
-            response_data = {'message': 'Пользователь с такой почтой не существует'}
-            return jsonify(response_data), 404
+    if not user:
+        response_data = {'message': 'Пользователь с такой почтой не найден'}
+        return jsonify(response_data), 400
 
-        stored_password = user[1]
+    #if not check_password_hash(user.password, password):
+    #   response_data = {'message': 'Неверный пароль'}
+    #  return jsonify(response_data), 400
 
-        print(bytes.fromhex(stored_password))              # Суета с хешированием, обратно не могу расхешировать пароль.
-        print(hashed_password)
-        if stored_password != hashed_password:
-            response_data = {'message': 'Неправильный пароль'}
-            return jsonify(response_data), 401
+    access_token = create_access_token(identity=email)
+    print(access_token)
 
-        access_token = create_access_token(identity=email)
-        print(access_token)
-
-        response_data = {'message': 'Вход выполнен успешно', 'access_token': access_token}
-        return jsonify(response_data), 200
-    except psycopg2.Error as e:
-        response_data = {'message': 'Ошибка при входе'}
-        return jsonify(response_data), 500
-    finally:
-        cursor.close()
-        conn.close()
-
-    response_data = {'message': 'Вход выполнен успешно'}
+    response_data = {'message': 'Аутентификация прошла успешно', 'access_token': access_token}
     return jsonify(response_data), 200
 
 
+
 def hash_password(password):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+    pwhash = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
+    hashed_password = pwhash.decode('utf8')
     return hashed_password
 
-def compare_password(password, hashed_password):
-    decoded_hashed_password = bytes.fromhex(hashed_password.decode('utf-8'))
 
-    if bcrypt.checkpw(password.encode('utf-8'), decoded_hashed_password):
-        return True
-    else:
-        return False
 
 
 if __name__ == '__main__':

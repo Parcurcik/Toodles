@@ -36,7 +36,10 @@ const Register = () => {
                 console.log(response.data);
             })
             .catch(error => {
-                console.error(error);
+                if (error.response && error.response.status === 400) {
+                const errorMessage = error.response.data.message;
+                console.log(errorMessage)
+                    }
             });
     };
 
