@@ -16,19 +16,6 @@ const LongPage = () => {
     const [rotate, setRotaiting] = useState(false)
     const firstFaqRef = useRef(null);
     const secondFaqRef = useRef(null);
-    const secondImageRef = useRef(null);
-
-    useEffect(() => {
-      const firstFaqHeight = firstFaqRef.current.offsetHeight;
-      const marginTopPercentage = (firstFaqHeight / window.innerHeight) * 100;
-      secondFaqRef.current.style.marginTop = `${marginTopPercentage - 15}%`;
-      secondImageRef.current.style.marginTop = `${marginTopPercentage - 15}%`;
-
-      if (menuActive) {
-        secondFaqRef.current.style.marginTop = `${marginTopPercentage - 5}%`;
-        secondImageRef.current.style.marginTop = `${marginTopPercentage - 5}%`;
-      }
-    }, [menuActive]);
 
 
 
@@ -112,7 +99,7 @@ const LongPage = () => {
                                 width: "3.5vw",
                             }}
                         />
-                        <div className={"faq_cont"} ref={secondFaqRef}>
+                        <div className={"faq_cont"} style={{ marginTop: "4%"}}>
                             <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
                             <p>Мои создатели не несут ответсвенности за мои ответы. Если вы не удовлетворены ответом или нуждаетесь в дополнительной информации, попробуйте перефразировать свой запрос.</p>
                         </div>
@@ -120,11 +107,9 @@ const LongPage = () => {
                             src={toodle_icon}
                             style={{
                                 position: "absolute",
-                                top: "1%",
-                                left: "0",
+                                top: "92%",
                                 width: "3.5vw",
                             }}
-                            ref={secondImageRef}
                         />
                     </div>
                 </div>
