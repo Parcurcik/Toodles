@@ -28,6 +28,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const [avatar, setAvatar] = useState("../images/first_image.png");
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const setEmptyData = () => {
         setFirstName("");
@@ -38,8 +39,13 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
     };
 
     const handleImageClick = (imagePath) => {
-        setAvatar(imagePath);
-    };
+          if (selectedImage === imagePath) {
+            setSelectedImage(null); // Сбросить выбранную картинку
+          } else {
+            setSelectedImage(imagePath); // Установить выбранную картинку
+          }
+          setAvatar(imagePath);
+        };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -130,13 +136,63 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                     value={repeatPassword}
                     onChange={(e) => setRepeatPassword(e.target.value)}
                 />
-                <div className={"avatar_cont"}>
-                    <img src={first_image} style={{ width: "3vw", marginLeft: "5.5vw", cursor: "pointer" }} onClick={() => handleImageClick("../images/first_image.png")} />
-                    <img src={second_image} style={{ width: "3vw", marginLeft: "1vw", cursor: "pointer" }} onClick={() => handleImageClick("../images/second_image.png")} />
-                    <img src={third_image} style={{ width: "3vw", marginLeft: "1vw", cursor: "pointer" }} onClick={() => handleImageClick("../images/third_image.png")} />
-                    <img src={four_image} style={{ width: "3vw", marginLeft: "1vw", cursor: "pointer" }} onClick={() => handleImageClick("../images/four_image.png")} />
-                    <img src={adding_image} style={{ width: "3vw", marginLeft: "1vw", cursor: "pointer" }} onClick={() => handleImageClick("../images/adding_image.png")} />
-                </div>
+                <div className="avatar_cont">
+                      <img
+                        src={first_image}
+                        style={{
+                          width: "3vw",
+                          marginLeft: "5.5vw",
+                          cursor: "pointer",
+                          border: selectedImage === "../images/first_image.png" ? "2px solid rgb(233,203,248)" : "none",
+                            borderRadius: selectedImage === "../images/first_image.png" ? "50px" : "none"
+                        }}
+                        onClick={() => handleImageClick("../images/first_image.png")}
+                      />
+                      <img
+                        src={second_image}
+                        style={{
+                          width: "3vw",
+                          marginLeft: "1vw",
+                          cursor: "pointer",
+                          border: selectedImage === "../images/second_image.png" ? "2px solid rgb(233,203,248)" : "none",
+                            borderRadius: selectedImage === "../images/second_image.png" ? "50px" : "none"
+                        }}
+                        onClick={() => handleImageClick("../images/second_image.png")}
+                      />
+                      <img
+                        src={third_image}
+                        style={{
+                          width: "3vw",
+                          marginLeft: "1vw",
+                          cursor: "pointer",
+                          border: selectedImage === "../images/third_image.png" ? "2px solid rgb(233,203,248)" : "none",
+                            borderRadius: selectedImage === "../images/third_image.png" ? "50px" : "none"
+                        }}
+                        onClick={() => handleImageClick("../images/third_image.png")}
+                      />
+                      <img
+                        src={four_image}
+                        style={{
+                          width: "3vw",
+                          marginLeft: "1vw",
+                          cursor: "pointer",
+                          border: selectedImage === "../images/four_image.png" ? "2px solid rgb(233,203,248)" : "none",
+                            borderRadius: selectedImage === "../images/four_image.png" ? "50px" : "none"
+                        }}
+                        onClick={() => handleImageClick("../images/four_image.png")}
+                      />
+                      <img
+                        src={adding_image}
+                        style={{
+                          width: "3vw",
+                          marginLeft: "1vw",
+                          cursor: "pointer",
+                          border: selectedImage === "../images/adding_image.png" ? "2px solid rgb(233,203,248)" : "none",
+                          borderRadius: selectedImage === "../images/adding_image.png" ? "50px" : "none"
+                        }}
+                        onClick={() => handleImageClick("../images/adding_image.png")}
+                      />
+                    </div>
                 <Button Text={"Зарегистрироваться"} Width={"20vw"} marginTop={"1vw"} onClick={handleSubmit} />
             </div>
         </div>
