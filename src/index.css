@@ -180,6 +180,7 @@ code {
   margin-left: 6%;
   margin-right: 6%;
   margin-bottom: 6%;
+  margin-top: 3%;
   color: #000000;
 }
 
@@ -190,4 +191,13 @@ code {
   font-size: 25px;
   line-height: 23px;
   color: #000000;
+}
+
+.second_message {
+  display: flex;
+  flex-direction: row;
+}
+
+.second_message > * {
+  margin-right: -4%;
 }

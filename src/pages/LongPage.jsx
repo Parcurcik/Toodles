@@ -86,31 +86,35 @@ const LongPage = () => {
             <div className={menuActive ? "work-area active" : "work-area"}>
                 <div>
                     <div className={"question_group"}>
-                        <div className={"faq_cont"} ref={firstFaqRef}>
-                            <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
-                            <p>Я - сервис Toodles. Меня создала группа студентов второго курса института ИРИТ-РТФ. Я могу сгенерировать уникальные тексты по вашему запросу. При написании запроса начните со слова-действия: создай, напиши, сделай и т.д. Если вы хотите сгенерировать сочинение, комментарий, эссе, не забудьте указать это. Будьте конкретными, предоставьте соответствующий контекст и используйте правильную грамматику.</p>
-                        </div>
-                        <img
+                        <div className={"second_message"}>
+                            <img
                             src={toodle_icon}
                             style={{
-                                position: "absolute",
-                                top: "1%",
-                                left: "0",
-                                width: "3.5vw",
+                                width: "7vh",
+                                height: "7vh",
+                                position: "relative"
                             }}
-                        />
-                        <div className={"faq_cont"} style={{ marginTop: "4%"}}>
-                            <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
-                            <p>Мои создатели не несут ответсвенности за мои ответы. Если вы не удовлетворены ответом или нуждаетесь в дополнительной информации, попробуйте перефразировать свой запрос.</p>
+                            />
+                            <div className={"faq_cont"} ref={firstFaqRef} style={{marginRight: "8%"}}>
+                                <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
+                                <p>Я - сервис Toodles. Меня создала группа студентов второго курса института ИРИТ-РТФ. Я могу сгенерировать уникальные тексты по вашему запросу. При написании запроса начните со слова-действия: создай, напиши, сделай и т.д. Если вы хотите сгенерировать сочинение, комментарий, эссе, не забудьте указать это. Будьте конкретными, предоставьте соответствующий контекст и используйте правильную грамматику.</p>
+                            </div>
                         </div>
-                        <img
-                            src={toodle_icon}
-                            style={{
-                                position: "absolute",
-                                top: "92%",
-                                width: "3.5vw",
-                            }}
-                        />
+                        <div className={"second_message"}>
+                            <img
+                                src={toodle_icon}
+                                style={{
+                                    width: "7vh",
+                                    height: "7vh",
+                                    marginTop: "4%",
+                                    position: "relative"
+                                }}
+                            />
+                            <div className={"faq_cont"} style={{ marginTop: "4%", marginRight: "8%"}}>
+                                <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
+                                <p>Мои создатели не несут ответсвенности за мои ответы. Если вы не удовлетворены ответом или нуждаетесь в дополнительной информации, попробуйте перефразировать свой запрос.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,18 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../css/Menu.css'
 import image from "../images/button_left_menu.png";
 import toodle_logo_small from "../images/toodle_logo_small.png";
-import {Button} from "react-bootstrap";
+import logout_img from "../images/logout.png"
 import {useNavigate} from 'react-router-dom'
+import axios from "axios";
 
 
 const LeftMenu = ({items, active, setActive, href}) => {
     const navigate = useNavigate();
+    const [avatar, setAvatar] = useState("");
+    const [firstName, lastName] = useState("");
+
+    axios.get('http://127.0.0.1:5000/api/login')
+            .then(response => {
+
+            })
+            .catch(error => {
+                if (error.response && error.response.status === 400) {
+                    const errorMessage = error.response.data.message;
+                    console.log(errorMessage)
+                }
+            });
+
     const logout = () => {
         localStorage.clear()
         navigate('/registration');
-
     }
+
+
     return (
         <div className={active ? "menu active" : "menu"}>
             <div className={"menu__content"}>
@@ -54,7 +70,15 @@ const LeftMenu = ({items, active, setActive, href}) => {
                         </li>
                     )}
                 </ul>
-                <Button onClick={logout}>Logout</Button>
+                <div className={"profile_cont"}>
+                    <img src={"../images/second_image.png"}/>
+                    <p>Арсений Хомуськов</p>
+                    <img
+                    src={logout_img}
+                    alt={"Выход из профиля"}
+                    style={{width: "5vh", cursor: "pointer", position: "relative", right: "1%"}}
+                    onClick={() => {logout()}}/>
+                </div>
             </div>
         </div>
     );
