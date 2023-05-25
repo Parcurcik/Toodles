@@ -9,20 +9,47 @@ import axios from "axios";
 
 
 const LeftMenu = ({items, active, setActive, href}) => {
-    const navigate = useNavigate();
-    const [avatar, setAvatar] = useState("");
-    const [firstName, lastName] = useState("");
+    const navigate = useNavigate()
+    const [avatar, setAvatar] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
 
-    axios.get('http://127.0.0.1:5000/api/login')
-            .then(response => {
+    useEffect(() => {
+        const savedFirstName = localStorage.getItem("firstName");
+        const savedLastName = localStorage.getItem("lastName");
+        const savedAvatar = localStorage.getItem("avatar");
 
-            })
-            .catch(error => {
-                if (error.response && error.response.status === 400) {
-                    const errorMessage = error.response.data.message;
-                    console.log(errorMessage)
+        if (savedFirstName && savedLastName && savedAvatar) {
+            setFirstName(savedFirstName);
+            setLastName(savedLastName);
+            setAvatar(savedAvatar);
+        } else {
+            const fetchData = async () => {
+                try {
+                    const response = await axios.get("http://127.0.0.1:5000/api/user", {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                        },
+                    });
+
+                    const {firstName, lastName, avatar} = response.data;
+                    setFirstName(firstName);
+                    setLastName(lastName);
+                    setAvatar(avatar);
+
+                    localStorage.setItem("firstName", firstName);
+                    localStorage.setItem("lastName", lastName);
+                    localStorage.setItem("avatar", avatar);
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
                 }
-            });
+            };
+
+            fetchData();
+        }
+    }, []);
+
+
 
     const logout = () => {
         localStorage.clear()
@@ -72,15 +99,17 @@ const LeftMenu = ({items, active, setActive, href}) => {
                     )}
                 </ul>
                 <div className={"profile_cont"}>
-                    <img src={profile_image}
-                    alt={"Аватар пользователя"}
-                    style={{marginLeft: "5%", width: "4vh"}}/>
-                    <p>Арсений Хомуськов</p>
+                    <img src={avatar}
+                         alt={"Аватар пользователя"}
+                         style={{marginLeft: "5%", width: "4vh"}}/>
+                    <p>{firstName} {lastName}</p>
                     <img
-                    src={logout_img}
-                    alt={"Выход из профиля"}
-                    style={{width: "5vh", cursor: "pointer", position: "relative", right: "1%"}}
-                    onClick={() => {logout()}}/>
+                        src={logout_img}
+                        alt={"Выход из профиля"}
+                        style={{width: "5vh", cursor: "pointer", position: "relative", right: "1%"}}
+                        onClick={() => {
+                            logout()
+                        }}/>
                 </div>
             </div>
         </div>

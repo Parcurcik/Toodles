@@ -14,8 +14,12 @@ const ShortPage = () => {
     const [showAnswer, setShowAnswer] = useState(false)
     const [data, setData] = useState("")
     const [rotate, setRotaiting] = useState(false)
+    const [avatar, setAvatar] = useState("")
 
-
+    useEffect(() => {
+        const savedAvatar = localStorage.getItem("avatar");
+        setAvatar(savedAvatar)
+    }, []);
 
     const items = [
         {value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/long', index: 2},
@@ -93,7 +97,7 @@ const ShortPage = () => {
                             </div>))}
                         {questions.length >= 1 && (
                             <img
-                                src={user_icon}
+                                src={avatar}
                                 style={{
                                     position: "absolute",
                                     top: "6%",

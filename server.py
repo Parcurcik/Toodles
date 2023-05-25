@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, redirect
 from flask_cors import CORS, cross_origin
 import asyncio
 from toodles_model.call_model import Toodles
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from models import db, User
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -11,7 +11,7 @@ CORS(app)
 
 toodles_instance = Toodles()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost:5432/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Rfr123@localhost:5432/users'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = '20E0DE1D130FE2045E9F77217B23835DDFB30DC0F33C860576FC0D2044D41F42'
 db.init_app(app)
@@ -90,6 +90,27 @@ def login():
     access_token = create_access_token(identity=email)
 
     response_data = {'message': 'Аутентификация прошла успешно', 'access_token': access_token}
+    return jsonify(response_data), 200
+
+
+@app.route('/api/user', methods=['GET'])
+@jwt_required()
+@cross_origin()
+def get_user():
+    current_user = get_jwt_identity()
+
+    user = User.query.filter_by(email=current_user).first()
+
+    if not user:
+        response_data = {'message': 'Пользователь не найден'}
+        return jsonify(response_data), 404
+
+    response_data = {
+        'firstName': user.name,
+        'lastName': user.last_name,
+        'avatar': user.avatar
+    }
+
     return jsonify(response_data), 200
 
 
