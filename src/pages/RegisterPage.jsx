@@ -81,7 +81,7 @@ const Register = () => {
             <Input_Reg placeHolder={"Пароль"} marginTop={"2%"} image={lock} input_type={"password"} value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
 
-            <Button Text={"Вход"} Width={"10vw"} marginTop={"5%"} onClick={handleSubmit}/>
+            <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit}/>
 
             {isVisible && (
                 <img

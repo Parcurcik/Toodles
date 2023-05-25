@@ -77,6 +77,7 @@
     align-items: center;
     flex-direction: row;
     margin-top: 5vh;
+    width: auto;
 }
 
 .avatar_cont > * {
@@ -84,4 +85,5 @@
 
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
   .menu__content_reg {width: 80%}
+    .avatar_cont {height: 5%; padding-bottom: 30%}
 }

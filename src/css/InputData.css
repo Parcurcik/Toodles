@@ -39,6 +39,9 @@ input::placeholder {
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
+.label_cont {width: 21vw}
+
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
   .data_body {width: 80%}
+    .label_cont {width: 94%}
 }

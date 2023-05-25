@@ -140,7 +140,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                       <img
                         src={first_image}
                         style={{
-                          width: "3vw",
+                          width: "7vh",
                           cursor: "pointer",
                           border: selectedImage === "../images/first_image.png" ? "2px solid rgb(233,203,248)" : "none",
                             borderRadius: selectedImage === "../images/first_image.png" ? "50px" : "none"
@@ -150,7 +150,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                       <img
                         src={second_image}
                         style={{
-                          width: "3vw",
+                          width: "7vh",
                           marginLeft: "1vw",
                           cursor: "pointer",
                           border: selectedImage === "../images/second_image.png" ? "2px solid rgb(233,203,248)" : "none",
@@ -161,7 +161,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                       <img
                         src={third_image}
                         style={{
-                          width: "3vw",
+                          width: "7vh",
                           marginLeft: "1vw",
                           cursor: "pointer",
                           border: selectedImage === "../images/third_image.png" ? "2px solid rgb(233,203,248)" : "none",
@@ -172,7 +172,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                       <img
                         src={four_image}
                         style={{
-                          width: "3vw",
+                          width: "7vh",
                           marginLeft: "1vw",
                           cursor: "pointer",
                           border: selectedImage === "../images/four_image.png" ? "2px solid rgb(233,203,248)" : "none",
@@ -181,7 +181,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                         onClick={() => handleImageClick("../images/four_image.png")}
                       />
                     </div>
-                <Button Text={"Зарегистрироваться"} Width={"20vw"} marginTop={"1vw"} onClick={handleSubmit} />
+                <Button Text={"Зарегистрироваться"} marginTop={"1vw"} onClick={handleSubmit} Width={"75%"} />
             </div>
         </div>
     );

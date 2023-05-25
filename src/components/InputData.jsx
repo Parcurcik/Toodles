@@ -5,7 +5,7 @@ import "../css/InputData.css"
 const InputData = ({ marginTop, placeHolder, input_type = "text", value, onChange }) => {
   return (
     <div className={"data_body"} style={{ marginTop: marginTop }}>
-      <label style={{ width: "21vw", marginTop: "2%" }}>
+      <label style={{ marginTop: "2%" }} className={"label_cont"}>
         <input
           placeholder={placeHolder}
           style={{
