@@ -16,9 +16,8 @@ const CodePage = () => {
     const [rotate, setRotaiting] = useState(false)
 
 
-
     const items = [
-        {value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/code', index: 2},
+        {value: "Спроси Toodles", href: '/short', index: 0}, {value: "Справка", href: '/code', index: 2},
     ];
 
     const questRequest = (data) => {
@@ -45,7 +44,6 @@ const CodePage = () => {
             setQuestions((questions) => questions.slice(1));
         }
         setQuestions((questions) => [...questions, question]);
-
 
 
     };

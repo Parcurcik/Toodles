@@ -68,7 +68,6 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
             };
 
             const response = await axios.post("http://127.0.0.1:5000/api/register", data);
-            console.log(response.data);
             const { access_token } = response.data;
             localStorage.setItem('access_token', access_token);
 
