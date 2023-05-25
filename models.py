@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'registration'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))

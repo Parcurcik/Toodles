@@ -99,9 +99,14 @@ const LeftMenu = ({items, active, setActive, href}) => {
                     )}
                 </ul>
                 <div className={"profile_cont"}>
-                    <img src={avatar}
+                    <img src={avatar === "../images/third_image.png" ? require("../images/third_image.png") :
+                             avatar === "../images/first_image.png" ? require("../images/first_image.png") :
+                             avatar === "../images/second_image.png" ? require("../images/second_image.png") :
+                             avatar === "../images/four_image.png" ? require("../images/four_image.png") :
+                             ""}
                          alt={"Аватар пользователя"}
-                         style={{marginLeft: "5%", width: "4vh"}}/>
+                         style={{marginLeft: "5%", width: "4vh"}}
+                        onClick={ () => {console.log(avatar)}}/>
                     <p>{firstName} {lastName}</p>
                     <img
                         src={logout_img}

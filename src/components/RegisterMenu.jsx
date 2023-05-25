@@ -141,7 +141,6 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                         src={first_image}
                         style={{
                           width: "3vw",
-                          marginLeft: "5.5vw",
                           cursor: "pointer",
                           border: selectedImage === "../images/first_image.png" ? "2px solid rgb(233,203,248)" : "none",
                             borderRadius: selectedImage === "../images/first_image.png" ? "50px" : "none"
@@ -180,17 +179,6 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                             borderRadius: selectedImage === "../images/four_image.png" ? "50px" : "none"
                         }}
                         onClick={() => handleImageClick("../images/four_image.png")}
-                      />
-                      <img
-                        src={adding_image}
-                        style={{
-                          width: "3vw",
-                          marginLeft: "1vw",
-                          cursor: "pointer",
-                          border: selectedImage === "../images/adding_image.png" ? "2px solid rgb(233,203,248)" : "none",
-                          borderRadius: selectedImage === "../images/adding_image.png" ? "50px" : "none"
-                        }}
-                        onClick={() => handleImageClick("../images/adding_image.png")}
                       />
                     </div>
                 <Button Text={"Зарегистрироваться"} Width={"20vw"} marginTop={"1vw"} onClick={handleSubmit} />

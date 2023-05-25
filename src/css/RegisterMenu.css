@@ -27,7 +27,8 @@
     margin: 0 auto;
     transition: 0.4s all;
     background: #FFAD3E;
-    border-radius: 25px
+    border-radius: 25px;
+    align-items: center;
 }
 
 .menu__content_reg ul li a {
@@ -76,10 +77,9 @@
     align-items: center;
     flex-direction: row;
     margin-top: 5vh;
-    height: 15%;
-    width: auto;
-    margin-left: 3vh;
-    margin-right: 3vh;
+}
+
+.avatar_cont > * {
 }
 
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */

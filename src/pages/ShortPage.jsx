@@ -97,7 +97,11 @@ const ShortPage = () => {
                             </div>))}
                         {questions.length >= 1 && (
                             <img
-                                src={avatar}
+                                src={avatar === "../images/third_image.png" ? require("../images/third_image.png") :
+                                 avatar === "../images/first_image.png" ? require("../images/first_image.png") :
+                                 avatar === "../images/second_image.png" ? require("../images/second_image.png") :
+                                 avatar === "../images/four_image.png" ? require("../images/four_image.png") :
+                                 ""}
                                 style={{
                                     position: "absolute",
                                     top: "6%",
