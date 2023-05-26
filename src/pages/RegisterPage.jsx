@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import logo from '../images/reg_logo.png'
 import lines from '../images/lines.png'
 import RegisterMenu from "../components/RegisterMenu";
@@ -18,17 +18,26 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const isVisible = !menuActive
+    const isVisible = !menuActive;
+      const buttonRef = useRef(null); // Добавление референса
 
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-          handleSubmit();
+      useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+
+      const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && event.target === document.body) {
+          event.preventDefault();
+          buttonRef.current.click(); // Использование референса
         }
       };
 
-    const handleClick = () => {
+      const handleClick = () => {
         setMenuActive(!menuActive);
-    }
+      }
 
 
     const handleSubmit = () => {
@@ -84,7 +93,7 @@ const Register = () => {
             <Input_Reg placeHolder={"Пароль"} marginTop={"2%"} image={lock} input_type={"password"} value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
 
-            <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit} onKeyPress={handleKeyPress}/>
+            <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit} buttonRef={buttonRef}/>
 
             {isVisible && (
                 <img
