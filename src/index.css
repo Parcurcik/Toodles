@@ -59,8 +59,8 @@ code {
 }
 
 .menu-btn {
-  width: 65px;
-  height: 65px;
+  width: 5%;
+  height: 10%;
   border-radius: 25px;
   cursor: pointer;
 }
@@ -200,4 +200,24 @@ code {
 
 .second_message > * {
   margin-right: -4%;
+}
+
+.toodle_icon{width: 7vh; height: 7vh}
+
+@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .menu-btn{height: 5%; width: 8.5%; z-index: 4}
+  .logo-main{width: 60vw; height: 15vh}
+  .work-area{width: 95vw}
+  .second_message{}
+  .toodle_icon{width: 4vh; height: 4vh}
+  .faq_cont p {
+    font-size: 15px;
+  }
+  .faq_cont h1 {
+    font-size: 17px;
+  }
+  .work-area {
+    width: 90%;
+  }
+  .content-container p {font-size: 12px}
 }

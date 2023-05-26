@@ -6,4 +6,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.reg_words {
+  width: 25%;
+  z-index: 2;
+  position: absolute;
+  margin-right: auto;
+  bottom: 5vh;
+  cursor: pointer;
+}
+
+.logo_reg {
+  width: 30vw;
+  z-index: 2;
+  margin-top: 3%;
+}
+
+@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .reg_words{width: 80%}
+  .logo_reg{width: 80%; margin-bottom: 10%}
 }

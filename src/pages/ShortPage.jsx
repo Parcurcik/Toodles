@@ -79,8 +79,6 @@ const ShortPage = () => {
                     position: "relative",
                     top: "2%",
                     left: "1%",
-                    width: "4.5%",
-                    height: "9%",
                 }}
             />
 

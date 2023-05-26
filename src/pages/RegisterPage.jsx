@@ -20,6 +20,12 @@ const Register = () => {
 
     const isVisible = !menuActive
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          handleSubmit();
+        }
+      };
+
     const handleClick = () => {
         setMenuActive(!menuActive);
     }
@@ -30,6 +36,7 @@ const Register = () => {
             email: email,
             password: password
         };
+
 
 
         axios.post('http://127.0.0.1:5000/api/login', data)
@@ -69,11 +76,8 @@ const Register = () => {
 
             <img
                 src={logo}
-                style={{
-                    width: "30vw",
-                    zIndex: "2",
-                    marginTop: "3%"
-                }}/>
+                style={{}}
+                className={"logo_reg"}/>
 
             <Input_Reg placeHolder={"Почта"} image={letter_Reg} value={email}
                        onChange={(e) => setEmail(e.target.value)}/>
@@ -81,20 +85,13 @@ const Register = () => {
             <Input_Reg placeHolder={"Пароль"} marginTop={"2%"} image={lock} input_type={"password"} value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
 
-            <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit}/>
+            <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit} onKeyPress={handleKeyPress}/>
 
             {isVisible && (
                 <img
                     src={Register_words}
                     alt={"Зарегистрироваться"}
-                    style={{
-                        width: "25vw",
-                        zIndex: "2",
-                        position: "absolute",
-                        marginRight: "auto",
-                        bottom: "5vh",
-                        cursor: "pointer"
-                    }}
+                    className={"reg_words"}
                     onClick={handleClick}
                 />
             )}

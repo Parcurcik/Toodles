@@ -107,3 +107,10 @@
     color: #9600FF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 }
+
+@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .menu__content{width: 90%;}
+    .menu_cont_div{width:90vw;}
+    .menu{z-index: 9999999999}
+    .profile_cont{width:80%;}
+}

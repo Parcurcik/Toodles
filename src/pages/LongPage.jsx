@@ -78,8 +78,6 @@ const LongPage = () => {
                     position: "relative",
                     top: "2%",
                     left: "1%",
-                    width: "4.5%",
-                    height: "9%",
                 }}
             />
 
@@ -90,10 +88,9 @@ const LongPage = () => {
                             <img
                             src={toodle_icon}
                             style={{
-                                width: "7vh",
-                                height: "7vh",
                                 position: "relative"
                             }}
+                            className={"toodle_icon"}
                             />
                             <div className={"faq_cont"} ref={firstFaqRef} style={{marginRight: "8%"}}>
                                 <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
@@ -104,11 +101,10 @@ const LongPage = () => {
                             <img
                                 src={toodle_icon}
                                 style={{
-                                    width: "7vh",
-                                    height: "7vh",
                                     marginTop: "4%",
                                     position: "relative"
                                 }}
+                                className={"toodle_icon"}
                             />
                             <div className={"faq_cont"} style={{ marginTop: "4%", marginRight: "8%"}}>
                                 <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
