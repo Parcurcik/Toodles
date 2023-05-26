@@ -5,15 +5,14 @@ from toodles_model.call_model import Toodles
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from models import db, User
 from werkzeug.security import check_password_hash, generate_password_hash
+from config import Config
 
 app = Flask(__name__)
 CORS(app)
 
 toodles_instance = Toodles()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost:5432/postgres'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = '20E0DE1D130FE2045E9F77217B23835DDFB30DC0F33C860576FC0D2044D41F42'
+app.config.from_object(Config)
 db.init_app(app)
 jwt = JWTManager(app)
 
@@ -22,7 +21,6 @@ jwt = JWTManager(app)
 @cross_origin()
 def process_data():
     data = request.get_json()
-    print(data[0])
 
     async def process_question():
         result = toodles_instance.make_answer(data)
@@ -32,7 +30,6 @@ def process_data():
     asyncio.set_event_loop(loop)
     result = loop.run_until_complete(process_question())
 
-    print(result)
     response_data = {'message': 'Данные успешно обработаны', 'result': result}
     return jsonify(response_data), 200
 
@@ -41,7 +38,6 @@ def process_data():
 @cross_origin()
 def register():
     data = request.get_json()
-    print(data)
 
     name = data.get('firstName')
     last_name = data.get('lastName')
@@ -71,7 +67,6 @@ def register():
 @cross_origin()
 def login():
     data = request.get_json()
-    print(data)
 
     email = data.get('email')
     password = data.get('password')
@@ -82,7 +77,6 @@ def login():
         response_data = {'message': 'Пользователь с такой почтой не найден'}
         return jsonify(response_data), 400
 
-    print(user.password)
     if not check_password_hash(user.password, password):
         response_data = {'message': 'Неверный пароль'}
         return jsonify(response_data), 400

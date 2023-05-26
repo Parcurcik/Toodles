@@ -16,7 +16,6 @@ const Router = () => {
         //Георгий, фикс
 
     }
-    console.log(access_token)
   }, []);
 
   return (

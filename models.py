@@ -1,10 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
 
 db = SQLAlchemy()
 
 
 class User(db.Model):
-    __tablename__ = 'registration'
+    __tablename__ = Config.TABLE_NAME
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))

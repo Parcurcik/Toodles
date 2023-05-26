@@ -22,7 +22,7 @@ const ShortPage = () => {
     }, []);
 
     const items = [
-        {value:"Спроси Toodles", href: '/short', index: 0}, {value:"Справка", href: '/long', index: 2},
+        {value: "Спроси Toodles", href: '/short', index: 0}, {value: "Справка", href: '/long', index: 2},
     ];
 
     const questRequest = (data) => {
@@ -30,11 +30,9 @@ const ShortPage = () => {
         setRotaiting(true)
         axios.post('http://127.0.0.1:5000/api/question', data)
             .then(response => {
-                console.log(response);
                 const answer = response.data.result
                 setData(answer);
                 setShowAnswer(true)
-                console.log(rotate)
                 setRotaiting(false)
             })
             .catch(error => {
@@ -49,7 +47,6 @@ const ShortPage = () => {
             setQuestions((questions) => questions.slice(1));
         }
         setQuestions((questions) => [...questions, question]);
-
 
 
     };
@@ -96,10 +93,10 @@ const ShortPage = () => {
                         {questions.length >= 1 && (
                             <img
                                 src={avatar === "../images/third_image.png" ? require("../images/third_image.png") :
-                                 avatar === "../images/first_image.png" ? require("../images/first_image.png") :
-                                 avatar === "../images/second_image.png" ? require("../images/second_image.png") :
-                                 avatar === "../images/four_image.png" ? require("../images/four_image.png") :
-                                 ""}
+                                    avatar === "../images/first_image.png" ? require("../images/first_image.png") :
+                                        avatar === "../images/second_image.png" ? require("../images/second_image.png") :
+                                            avatar === "../images/four_image.png" ? require("../images/four_image.png") :
+                                                ""}
                                 style={{
                                     position: "absolute",
                                     top: "6%",
