@@ -30,11 +30,17 @@
 }
 
 .rotate {
+    width: 2vw;
     transition: transform 30s ease-in-out;
 }
 
 .rotate-toodle {
+    width: 2vw;
     transform: rotate(10440deg);
+}
+
+.input_image {
+    width: 2vw;
 }
 
 
@@ -44,4 +50,10 @@ input:focus::-moz-placeholder {
 
 .input_body--focused {
   background-color: white;
+}
+
+@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+  .input_image {width: 11%}
+    .rotate {width: 11%}
+    .rotate-toodle{width: 11%}
 }

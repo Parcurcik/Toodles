@@ -58,13 +58,12 @@ const Input = ({ onAddQuestion, isSetRotating }) => {
         src={isSetRotating ? gray_toodle : letter}
         alt={""}
         style={{
-          width: "2vw",
           cursor: "pointer",
           marginLeft: "auto",
           marginRight: "1.75vw",
         }}
         onClick={handleLetterClick}
-        className={isSetRotating ? "rotate rotate-toodle" : ""}
+        className={isSetRotating ? "rotate rotate-toodle" : "input_image"}
       />
     </div>
   );
