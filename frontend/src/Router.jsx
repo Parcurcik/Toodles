@@ -22,7 +22,6 @@ const Router = () => {
     if (!access_token && window.location.pathname !== "/registration") {
       navigate("/registration");
     }
-    console.log(access_token);
   }, [navigate]);
 
   return (

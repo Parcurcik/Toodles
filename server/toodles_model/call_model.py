@@ -5,10 +5,10 @@ import time
 
 
 class Toodles:
-    def __init__(self, model_path=r'C:\Projects\Toodles\toodles_model\toodles_essays'):
+    def __init__(self, model_path=r'C:\Projects\Toodles\server\toodles_model\toodles_essays'):
         self.tokenizer = GPT2Tokenizer.from_pretrained(model_path)
         self.model = GPT2LMHeadModel.from_pretrained(model_path)
-        self.model.to('cuda')
+        self.model.to("cpu")
         self.bad_word_ids = [
             [203],  # \n
             [225],  # weird space 1
@@ -70,7 +70,7 @@ class Toodles:
                      min_length=50):
         if bad_word_ids is None:
             bad_word_ids = self.bad_word_ids
-        input_ids = self.tokenizer.encode(context, add_special_tokens=False, return_tensors="pt").to("cuda")
+        input_ids = self.tokenizer.encode(context, add_special_tokens=False, return_tensors="pt").to("cpu")
         input_ids = input_ids[:, -1700:]
         input_size = input_ids.size(1)
         output_sequences = self.model.generate(
