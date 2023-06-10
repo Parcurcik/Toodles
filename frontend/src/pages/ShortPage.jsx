@@ -17,9 +17,27 @@ const ShortPage = () => {
     const [avatar, setAvatar] = useState("")
 
     useEffect(() => {
-        const savedAvatar = localStorage.getItem("avatar");
-        setAvatar(savedAvatar)
+        const savedAvatar = localStorage.getItem('avatar');
+        const savedData = localStorage.getItem('data');
+
+        if (savedAvatar) {
+            setAvatar(savedAvatar);
+        }
+
+        if (savedData) {
+            setData(savedData);
+            setShowAnswer(true);
+        }
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('avatar', avatar);
+    }, [avatar]);
+
+    useEffect(() => {
+        localStorage.setItem('data', data);
+    }, [data]);
+
 
     const items = [
         {value: "Спроси Toodles", href: '/short', index: 0}, {value: "Справка", href: '/long', index: 2},
@@ -47,8 +65,6 @@ const ShortPage = () => {
             setQuestions((questions) => questions.slice(1));
         }
         setQuestions((questions) => [...questions, question]);
-
-
     };
     useEffect(() => {
         if (questions.length > 0) {

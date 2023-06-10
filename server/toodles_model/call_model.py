@@ -5,10 +5,10 @@ import time
 
 
 class Toodles:
-    def __init__(self, model_path=r'C:\Projects\Toodles\toodles_model\toodles_essays'):
+    def __init__(self, model_path="Parcurcik/toodles_essays"):
         self.tokenizer = GPT2Tokenizer.from_pretrained(model_path)
         self.model = GPT2LMHeadModel.from_pretrained(model_path)
-        self.model.to('cuda')
+        self.model.to("cuda")
         self.bad_word_ids = [
             [203],  # \n
             [225],  # weird space 1
@@ -112,4 +112,3 @@ class Toodles:
             return self.gen_fragment(beginning, temperature=1.0, max_length=200)
         else:
             return self.gen_fragment(beginning, temperature=1.0, max_length=100)
-
