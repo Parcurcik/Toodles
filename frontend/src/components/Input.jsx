@@ -4,10 +4,8 @@ import gray_toodle from '../images/gray_toodle.png';
 import "../css/Input.css";
 
 const Input = ({ onAddQuestion, isSetRotating }) => {
-  const [isRotating, setIsRotating] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const inputIndex = useState(0)
 
   const handleLetterClick = () => {
     if (inputValue) {
@@ -33,10 +31,10 @@ const Input = ({ onAddQuestion, isSetRotating }) => {
   return (
     <div className={"input_body" + (isFocused ? " input_body--focused" : "")}>
       <label
-        style={{
-          width: "47.5vw",
-          marginTop: "1%",
-        }}>
+            className={"input_label"}
+            style={{
+              marginTop: "1%",
+            }}>
         <input
           placeholder={isFocused ? 'Пиши вопросик...' : ''}
           style={{

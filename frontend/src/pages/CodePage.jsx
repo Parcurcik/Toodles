@@ -6,7 +6,6 @@ import LeftMenu from "../components/LeftMenu";
 import Input from "../components/Input";
 import lines from "../images/lines.png";
 import axios from 'axios';
-import {getQueriesForElement} from "@testing-library/react";
 
 const CodePage = () => {
     const [menuActive, setMenuActive] = useState(false)
@@ -61,9 +60,10 @@ const CodePage = () => {
                 src={lines}
                 style={{
                     position: "absolute",
-                    width: "100vw",
-                    height: "100vh"
-                }}/>
+                }}
+                alt={""}
+                className={"lines"}
+            />
             <img
                 src={image}
                 alt=""
@@ -98,6 +98,7 @@ const CodePage = () => {
                                     right: "1%",
                                     width: "3.5vw"
                                 }}
+                                alt={""}
                             />
                         )}
                     </div>
@@ -115,6 +116,7 @@ const CodePage = () => {
                                 left: "0",
                                 width: "3.5vw",
                             }}
+                            alt={""}
                         />
                     )}
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import '../css/RegisterMenu.css';
 import reg_logo from '../images/reg_logo.png';
 import InputData from "./InputData";
@@ -7,7 +7,6 @@ import first_image from "../images/first_image.png";
 import second_image from "../images/second_image.png";
 import third_image from "../images/third_image.png";
 import four_image from "../images/four_image.png";
-import adding_image from "../images/adding_image.png";
 import axios from "axios";
 import * as yup from "yup";
 import { useNavigate } from 'react-router-dom';
@@ -145,7 +144,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                             borderRadius: selectedImage === "../images/first_image.png" ? "50px" : "none"
                         }}
                         onClick={() => handleImageClick("../images/first_image.png")}
-                      />
+                       alt={""}/>
                       <img
                         src={second_image}
                         style={{
@@ -156,7 +155,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                             borderRadius: selectedImage === "../images/second_image.png" ? "50px" : "none"
                         }}
                         onClick={() => handleImageClick("../images/second_image.png")}
-                      />
+                       alt={""}/>
                       <img
                         src={third_image}
                         style={{
@@ -167,6 +166,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                             borderRadius: selectedImage === "../images/third_image.png" ? "50px" : "none"
                         }}
                         onClick={() => handleImageClick("../images/third_image.png")}
+                        alt={""}
                       />
                       <img
                         src={four_image}
@@ -178,6 +178,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                             borderRadius: selectedImage === "../images/four_image.png" ? "50px" : "none"
                         }}
                         onClick={() => handleImageClick("../images/four_image.png")}
+                        alt={""}
                       />
                     </div>
                 <Button Text={"Зарегистрироваться"} marginTop={"1vw"} onClick={handleSubmit} Width={"75%"} />

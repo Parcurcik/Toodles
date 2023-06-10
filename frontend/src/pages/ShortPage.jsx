@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import image from '../images/button_left_menu.png';
-import user_icon from '../images/user_icon.png'
 import toodle_icon from '../images/toodle_icon.png'
 import LeftMenu from "../components/LeftMenu";
 import Input from "../components/Input";
 import lines from "../images/lines.png";
 import axios from 'axios';
-import {getQueriesForElement} from "@testing-library/react";
 
 const ShortPage = () => {
     const [menuActive, setMenuActive] = useState(false)
@@ -80,9 +78,10 @@ const ShortPage = () => {
                 src={lines}
                 style={{
                     position: "absolute",
-                    width: "100vw",
-                    height: "100vh"
-                }}/>
+                }}
+                alt={""}
+                className={"lines"}
+            />
             <img
                 src={image}
                 alt=""
@@ -117,8 +116,9 @@ const ShortPage = () => {
                                     position: "absolute",
                                     top: "6%",
                                     right: "1%",
-                                    width: "3.5vw"
                                 }}
+                                className={"avatar_img_screen"}
+                                alt={""}
                             />
                         )}
                     </div>
@@ -132,10 +132,10 @@ const ShortPage = () => {
                             src={toodle_icon}
                             style={{
                                 position: "absolute",
-                                top: "26%",
                                 left: "0",
-                                width: "3.5vw",
                             }}
+                            alt={""}
+                            className={"avatar_img_screen_2"}
                         />
                     )}
                 </div>

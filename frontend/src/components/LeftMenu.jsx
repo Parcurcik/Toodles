@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../css/Menu.css'
 import image from "../images/button_left_menu.png";
-import profile_image from "../images/first_image.png"
 import toodle_logo_small from "../images/toodle_logo_small.png";
 import logout_img from "../images/logout.png"
 import {useNavigate} from 'react-router-dom'

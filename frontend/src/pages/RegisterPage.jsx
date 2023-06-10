@@ -3,7 +3,7 @@ import logo from '../images/reg_logo.png'
 import lines from '../images/lines.png'
 import RegisterMenu from "../components/RegisterMenu";
 import '../css/RegisterPage.css'
-import Input_Reg from "../components/Input_Reg";
+import InputReg from "../components/InputReg";
 import letter_Reg from '../images/letter_Reg.png'
 import lock from '../images/lock.png'
 import Button from "../components/Button";
@@ -78,19 +78,22 @@ const Register = () => {
                 src={lines}
                 style={{
                     position: "absolute",
-                    width: "100vw",
-                    height: "100vh"
-                }}/>
+                }}
+                alt={""}
+                className={"lines"}
+            />
 
             <img
                 src={logo}
                 style={{}}
-                className={"logo_reg"}/>
+                className={"logo_reg"}
+                alt={""}
+            />
 
-            <Input_Reg placeHolder={"Почта"} image={letter_Reg} value={email}
+            <InputReg placeHolder={"Почта"} image={letter_Reg} value={email}
                        onChange={(e) => setEmail(e.target.value)}/>
 
-            <Input_Reg placeHolder={"Пароль"} marginTop={"2%"} image={lock} input_type={"password"} value={password}
+            <InputReg placeHolder={"Пароль"} marginTop={"2%"} image={lock} input_type={"password"} value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
 
             <Button Text={"Вход"} marginTop={"5%"} onClick={handleSubmit} buttonRef={buttonRef}/>

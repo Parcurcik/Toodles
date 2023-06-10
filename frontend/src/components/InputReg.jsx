@@ -2,7 +2,7 @@ import React from 'react';
 import "../css/InputReg.css"
 
 
-const Input_Reg = ({marginTop, placeHolder, image, input_type = "text", value, onChange}) => {
+const InputReg = ({marginTop, placeHolder, image, input_type = "text", value, onChange}) => {
     return (
         <div className={"inp_reg_body"}
              style={{marginTop: marginTop}}>
@@ -13,7 +13,6 @@ const Input_Reg = ({marginTop, placeHolder, image, input_type = "text", value, o
                     display: "flex"
                 }}>
                 <input
-
                     placeholder={placeHolder}
                     style={{
                         borderBottom: 'none',
@@ -42,4 +41,4 @@ const Input_Reg = ({marginTop, placeHolder, image, input_type = "text", value, o
     );
 };
 
-export default Input_Reg;
+export default InputReg;

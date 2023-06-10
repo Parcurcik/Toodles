@@ -1,21 +1,17 @@
 import React, {useEffect, useRef, useState} from "react";
 import image from '../images/button_left_menu.png';
-import user_icon from '../images/user_icon.png'
 import toodle_icon from '../images/toodle_icon.png'
 import LeftMenu from "../components/LeftMenu";
-import Input from "../components/Input";
 import lines from "../images/lines.png";
 import axios from 'axios';
-import {getQueriesForElement} from "@testing-library/react";
 
 const LongPage = () => {
     const [menuActive, setMenuActive] = useState(false)
-    const [questions, setQuestions] = useState([])
-    const [showAnswer, setShowAnswer] = useState(false)
-    const [data, setData] = useState("")
+    const [questions] = useState([])
+    const [ setShowAnswer] = useState(false)
+    const [setData] = useState("")
     const [rotate, setRotaiting] = useState(false)
     const firstFaqRef = useRef(null);
-    const secondFaqRef = useRef(null);
 
 
 
@@ -42,16 +38,6 @@ const LongPage = () => {
             });
     }
 
-
-    const handleAddQuestion = (question) => {
-        if (questions.length >= 1) {
-            setQuestions((questions) => questions.slice(1));
-        }
-        setQuestions((questions) => [...questions, question]);
-
-
-
-    };
     useEffect(() => {
         if (questions.length > 0) {
             questRequest(questions);
@@ -66,9 +52,10 @@ const LongPage = () => {
                 src={lines}
                 style={{
                     position: "absolute",
-                    width: "100vw",
-                    height: "100vh"
-                }}/>
+                }}
+                alt={""}
+                className={"lines"}
+            />
             <img
                 src={image}
                 alt=""
@@ -91,6 +78,7 @@ const LongPage = () => {
                                 position: "relative"
                             }}
                             className={"toodle_icon"}
+                            alt={""}
                             />
                             <div className={"faq_cont"} ref={firstFaqRef} style={{marginRight: "8%"}}>
                                 <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>
@@ -105,6 +93,7 @@ const LongPage = () => {
                                     position: "relative"
                                 }}
                                 className={"toodle_icon"}
+                                alt={""}
                             />
                             <div className={"faq_cont"} style={{ marginTop: "4%", marginRight: "8%"}}>
                                 <h1 style={{position: "relative", left: "-0.5%", marginTop: "1.5%"}}><b>Toodles</b></h1>

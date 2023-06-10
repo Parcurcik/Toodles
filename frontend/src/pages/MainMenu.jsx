@@ -37,9 +37,10 @@ const MainMenu = () => {
                 src={lines}
                 style={{
                     position: "absolute",
-                    width: "100vw",
-                    height: "100vh"
-                }}/>
+                }}
+                alt={""}
+                className={"lines"}
+            />
             <img
                 src={image}
                 alt=""
@@ -53,7 +54,8 @@ const MainMenu = () => {
             />
 
             <div className={menuActive ? "work-area active" : "work-area"}>
-                <img src={logo} className="logo-main"/>
+                <img src={logo} className="logo-main"
+                alt={""}/>
                 <div className={"DDM_cont"}>
                     <DropDownMenu content={"Спроси Toodles"} on_click={handleToggle} isFlipped={isVisible}/>
                     <div className={`content-container ${isVisible ? "visible" : "hidden"}`}>
