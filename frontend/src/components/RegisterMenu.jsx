@@ -20,6 +20,7 @@ const validationSchema = yup.object().shape({
 });
 
 const RegisterMenu = ({ items, active, setActive, href }) => {
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -75,21 +76,21 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
             setEmptyData();
 
         } catch (error) {
-            if (error.response && error.response.status === 400) {
+              if (error.response && error.response.status === 400) {
                 const errorMessage = error.response.data.message;
-                console.log(errorMessage);
-            }
+                alert(errorMessage);
+              }
 
-            if (error instanceof yup.ValidationError) {
+              if (error instanceof yup.ValidationError) {
                 const errorMessages = {};
 
                 error.inner.forEach((validationError) => {
-                    errorMessages[validationError.path] = validationError.message;
+                  errorMessages[validationError.path] = validationError.message;
                 });
 
-                console.log(errorMessages);
+                setErrors(errorMessages);
+              }
             }
-        }
     };
 
     return (
@@ -104,36 +105,45 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                     }}
                 />
                 <InputData
-                    placeHolder={"Имя"}
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                  placeHolder={"Имя"}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
+                {errors.firstName && <span className="error-message">{errors.firstName}</span>}
+
                 <InputData
-                    placeHolder={"Фамилия"}
-                    marginTop={"3.5%"}
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                  placeHolder={"Фамилия"}
+                  marginTop={"3.5%"}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
+                {errors.lastName && <span className="error-message">{errors.lastName}</span>}
+
                 <InputData
-                    placeHolder={"Почта"}
-                    marginTop={"3.5%"}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                  placeHolder={"Почта"}
+                  marginTop={"3.5%"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
+                {errors.email && <span className="error-message">{errors.email}</span>}
+
                 <InputData
-                    placeHolder={"Пароль"}
-                    marginTop={"3.5%"}
-                    input_type={"password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                  placeHolder={"Пароль"}
+                  marginTop={"3.5%"}
+                  input_type={"password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
+                {errors.password && <span className="error-message">{errors.password}</span>}
+
                 <InputData
-                    placeHolder={"Повторите пароль"}
-                    marginTop={"3.5%"}
-                    input_type={"password"}
-                    value={repeatPassword}
-                    onChange={(e) => setRepeatPassword(e.target.value)}
+                  placeHolder={"Повторите пароль"}
+                  marginTop={"3.5%"}
+                  input_type={"password"}
+                  value={repeatPassword}
+                  onChange={(e) => setRepeatPassword(e.target.value)}
                 />
+                {errors.repeatPassword && <span className="error-message">{errors.repeatPassword}</span>}
                 <div className="avatar_cont">
                       <img
                         src={first_image}

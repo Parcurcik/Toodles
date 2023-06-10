@@ -24,7 +24,14 @@
   margin-top: 3%;
 }
 
-@media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
+.error-message_2 {
+    z-index: 2;
+    color: #e9cbf8 !important;
+    font-family: Ubuntu-light;
+    font-size: 11px;
+}
+
+@media (max-width: 900px) {
   .reg_words{width: 80%}
   .logo_reg{width: 80%; margin-bottom: 10%}
 }

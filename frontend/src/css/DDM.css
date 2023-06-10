@@ -27,6 +27,6 @@
 }
 
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
-  .body{width: 100%}
+  .body{width: 80vw; margin-left: 2%}
   .body p {font-size: 20px}
 }

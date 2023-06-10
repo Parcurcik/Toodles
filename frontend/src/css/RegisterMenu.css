@@ -21,7 +21,6 @@
 
 .menu__content_reg {
     width: 33%;
-    height: 83%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -83,6 +82,11 @@
 .avatar_cont > * {
 }
 
+.error-message {
+    color: darkred;
+    font-family: Ubuntu-light;
+    font-size: 11px;
+}
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
   .menu__content_reg {width: 80%}
     .avatar_cont {height: 5%; padding-bottom: 30%}
