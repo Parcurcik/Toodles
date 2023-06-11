@@ -76,7 +76,6 @@ const Register = () => {
         } catch (error) {
             if (error instanceof yup.ValidationError) {
               const errorMessages = {};
-              alert(errorMessages);
 
               error.inner.forEach((validationError) => {
                 errorMessages[validationError.path] = validationError.message;
