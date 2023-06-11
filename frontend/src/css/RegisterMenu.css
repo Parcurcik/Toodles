@@ -75,7 +75,7 @@
 .avatar_cont {
     align-items: center;
     flex-direction: row;
-    margin-top: 5vh;
+    margin-top: 0.7vh;
     width: auto;
 }
 
@@ -83,11 +83,63 @@
 }
 
 .error-message {
-    color: darkred;
+    z-index: 2;
+    width:auto;
+    padding:0 5px;
+    color: white;
+    background-color: red;
+    margin-top: 1.5%;
+    border-radius: 3px;
     font-family: Ubuntu-light;
-    font-size: 11px;
+    font-size: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.avatars_h {
+    z-index: 99999;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    color: #9600FF;
+    font-size: 14px;
+    -webkit-text-stroke: 0.7px black;
 }
 @media (max-width: 900px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
   .menu__content_reg {width: 80%}
     .avatar_cont {height: 5%; padding-bottom: 30%}
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-5px);
+    }
+    20% {
+        transform: translateX(5px);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    40% {
+        transform: translateX(5px);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    60% {
+        transform: translateX(5px);
+    }
+    70% {
+        transform: translateX(-5px);
+    }
+    80% {
+        transform: translateX(5px);
+    }
+    90% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

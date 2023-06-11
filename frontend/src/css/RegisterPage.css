@@ -26,12 +26,54 @@
 
 .error-message_2 {
     z-index: 2;
-    color: #e9cbf8 !important;
+    width:auto;
+    padding:0 5px;
+    color: white;
+    background-color: red;
+    margin-top: 0.5%;
+    border-radius: 3px;
     font-family: Ubuntu-light;
-    font-size: 11px;
+    font-size: 12px;
+    animation: shake 0.5s ease-in-out;
 }
 
 @media (max-width: 900px) {
   .reg_words{width: 80%}
   .logo_reg{width: 80%; margin-bottom: 10%}
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-5px);
+    }
+    20% {
+        transform: translateX(5px);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    40% {
+        transform: translateX(5px);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    60% {
+        transform: translateX(5px);
+    }
+    70% {
+        transform: translateX(-5px);
+    }
+    80% {
+        transform: translateX(5px);
+    }
+    90% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

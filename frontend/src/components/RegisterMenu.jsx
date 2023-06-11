@@ -144,6 +144,7 @@ const RegisterMenu = ({ items, active, setActive, href }) => {
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
                 {errors.repeatPassword && <span className="error-message">{errors.repeatPassword}</span>}
+                <p className={"avatars_h"}>Выберите аватар</p>
                 <div className="avatar_cont">
                       <img
                         src={first_image}

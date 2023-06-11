@@ -5,7 +5,7 @@ import arrow from "../images/arrow.png"
 
 const DropDownMenu = ({content, on_click, isFlipped}) => {
     return (
-        <div className={"body"}>
+        <div className={"body"} onClick={on_click}>
             <img
             src={quest}
             alt={""}
