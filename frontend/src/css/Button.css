@@ -25,6 +25,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 415px) { /* Ограничиваем увеличение шрифта только на устройствах с шириной экрана не менее 768px */
-  .button_body {width: 75%}
+@media (max-width: 900px) {
+  .button_body {width: 75%; padding: 0 10%}
 }
+
