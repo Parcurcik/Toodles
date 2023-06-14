@@ -26,8 +26,11 @@
         python -m venv venv
 
         pip install -r requirements.txt
+2. Для более быстрой работы модели нужно скачать [CUDA](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_network),
+   а также [torch](https://pytorch.org/get-started/locally/) соответствующей версии.
+   В server\toodles_model\call_model.py изменить 'cpu' на 'cuda'.
 
-2. Необходимо перейти на frontend и в терминале прописать команды:
+3. Необходимо перейти на frontend и в терминале прописать команды:
 
         npm install
 

@@ -60,7 +60,7 @@ const MainMenu = () => {
                     <DropDownMenu content={"Спроси Toodles"} on_click={handleToggle} isFlipped={isVisible}/>
                     <div className={`content-container ${isVisible ? "visible" : "hidden"}`}>
                             <p>1) Чем занимаются программисты?</p>
-                            <p>2) Напиши сочинение на тему счастье.</p>
+                            <p>2) Напиши сочинение на тему счастье. Сочинение: </p>
                             <p>3) Что включить в мотивационное письмо?</p>
                     </div>
                 </div>
