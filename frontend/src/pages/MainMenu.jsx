@@ -59,15 +59,9 @@ const MainMenu = () => {
                 <div className={"DDM_cont"}>
                     <DropDownMenu content={"Спроси Toodles"} on_click={handleToggle} isFlipped={isVisible}/>
                     <div className={`content-container ${isVisible ? "visible" : "hidden"}`}>
-                        <a href="/short" onClick={() => console.log("Чем занимаются программисты?")}>
                             <p>1) Чем занимаются программисты?</p>
-                        </a>
-                        <a href="/short" onClick={() => console.log("Напиши сочинение на тему счастье.")}>
                             <p>2) Напиши сочинение на тему счастье.</p>
-                        </a>
-                        <a href="/short" onClick={() => console.log("Что включить в мотивационное письмо?")}>
                             <p>3) Что включить в мотивационное письмо?</p>
-                        </a>
                     </div>
                 </div>
             </div>
