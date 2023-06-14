@@ -12,6 +12,7 @@ const ShortPage = () => {
   const [data, setData] = useState("");
   const [rotate, setRotating] = useState(false);
   const [avatar, setAvatar] = useState("");
+  const [shouldGenerateAnswer, setShouldGenerateAnswer] = useState(false);
 
   useEffect(() => {
     const savedAvatar = localStorage.getItem('avatar');
@@ -67,21 +68,23 @@ const ShortPage = () => {
       setQuestions((questions) => questions.slice(1));
     }
     setQuestions((questions) => [...questions, question]);
+    setShouldGenerateAnswer(true);
   };
 
   useEffect(() => {
-    if (questions.length > 0) {
+    if (shouldGenerateAnswer && questions.length > 0) {
       questRequest(questions);
+      setShouldGenerateAnswer(false);
     }
-  }, [questions]);
+  }, [questions, shouldGenerateAnswer]);
 
   useEffect(() => {
     const savedAnswer = localStorage.getItem('answer');
 
-    if (savedAnswer) {
+    if (savedAnswer && questions.length === 0) {
       setData(JSON.parse(savedAnswer));
     }
-  }, []);
+  }, [questions]);
 
   return (
     <div className="menu_main">
