@@ -9,7 +9,6 @@ import axios from 'axios';
 const ShortPage = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [questions, setQuestions] = useState([]);
-  const [showAnswer, setShowAnswer] = useState(false);
   const [data, setData] = useState("");
   const [rotate, setRotating] = useState(false);
   const [avatar, setAvatar] = useState("");
@@ -18,7 +17,6 @@ const ShortPage = () => {
     const savedAvatar = localStorage.getItem('avatar');
     const savedData = localStorage.getItem('data');
     const savedQuestions = localStorage.getItem('questions');
-    const savedShowAnswer = localStorage.getItem('showAnswer');
 
     if (savedAvatar) {
       setAvatar(savedAvatar);
@@ -30,10 +28,6 @@ const ShortPage = () => {
 
     if (savedQuestions) {
       setQuestions(JSON.parse(savedQuestions));
-    }
-
-    if (savedShowAnswer === 'true') {
-      setShowAnswer(true);
     }
   }, []);
 
@@ -49,23 +43,17 @@ const ShortPage = () => {
     localStorage.setItem('questions', JSON.stringify(questions));
   }, [questions]);
 
-  useEffect(() => {
-    localStorage.setItem('showAnswer', showAnswer.toString());
-  }, [showAnswer]);
-
   const items = [
     { value: "Спроси Toodles", href: '/short', index: 0 },
     { value: "Справка", href: '/long', index: 2 },
   ];
 
   const questRequest = (data) => {
-    setShowAnswer(false);
     setRotating(true);
     axios.post('http://127.0.0.1:5000/api/question', data)
       .then(response => {
         const answer = response.data.result;
         setData(answer);
-        setShowAnswer(true);
         setRotating(false);
       })
       .catch(error => {
@@ -86,6 +74,14 @@ const ShortPage = () => {
       questRequest(questions);
     }
   }, [questions]);
+
+  useEffect(() => {
+    const savedAnswer = localStorage.getItem('answer');
+
+    if (savedAnswer) {
+      setData(JSON.parse(savedAnswer));
+    }
+  }, []);
 
   return (
     <div className="menu_main">
@@ -141,12 +137,12 @@ const ShortPage = () => {
               />
             )}
           </div>
-          {showAnswer && (
+          {data && (
             <div className={"answer_cont"}>
               <p><b>Toodles</b><br /><br />{data}</p>
             </div>
           )}
-          {showAnswer && (
+          {data && (
             <img
               src={toodle_icon}
               style={{
